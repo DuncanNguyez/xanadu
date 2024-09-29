@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'checkstyle'
+    id 'com.github.spotbugs'
+    id 'com.diffplug.spotless'
+}
+
+group = 'com.xanadu'
+version = '0.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+checkstyle {
+    toolVersion = '10.18.1'
+}
+
+spotless {
+    java {
+        googleJavaFormat()
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
