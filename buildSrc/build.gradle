@@ -16,3 +16,16 @@ dependencies {
     implementation libs.spotbugs
     implementation libs.spotless
 }
+
+tasks.register('addPreCommitGitHookOnBuild') {
+    println(" * * * Running Add Pre Commit Git Hook Script on Build * * * ")
+        copy {
+            from '../hooks/pre-commit'
+            into '../.git/hooks'
+        }
+    println("Added Pre Commit Git Hook Script.")
+}
+
+tasks.named("build") {
+    finalizedBy("addPreCommitGitHookOnBuild")
+}
