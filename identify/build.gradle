@@ -1,0 +1,7 @@
+plugins {
+    id 'buildlogic.spring-boot-conventions'
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.dependency.management)
+}
+
+

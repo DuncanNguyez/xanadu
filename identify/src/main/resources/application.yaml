@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: identify
+  threads:
+    virtual:
+      enabled: true
+  security:
+    oauth2:
+      authorizationserver:
+        client:
+          default-client:
+            registration:
+              client-id: ${DEFAULT_OAUTH2_CLIENT_ID}
+              client-authentication-methods:
+                - "none"
+              authorization-grant-types:
+                - "authorization_code"
+              redirect-uris:
+                - ${DEFAULT_OAUTH2_REDIRECT_URI}
+              scopes:
+                - "openid"
+                - "profile"
+            require-authorization-consent: true
+            require-proof-key: true
+
+server:
+  port: 8080
+
