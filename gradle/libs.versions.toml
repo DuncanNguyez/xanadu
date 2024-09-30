@@ -3,14 +3,15 @@
 
 
 [versions]
-spring-boot = "3.3.4"
-spring-dependency-management = "1.1.6"
+# versions for spring-boot-convertions-plugin
+spring-boot-gradle-plugin = "3.3.4"
+dependency-management-plugin = "1.1.6"
 spotbugs-gradle-plugin = "6.0.22"
 spotless-gradle-plugin = "6.25.0"
 
 [libraries]
+# libs for spring-boot-convertions-plugin
 spotbugs = { group = "com.github.spotbugs.snom", name = "spotbugs-gradle-plugin", version.ref = "spotbugs-gradle-plugin" }
 spotless = { group = "com.diffplug.spotless", name = "spotless-plugin-gradle", version.ref = "spotless-gradle-plugin" }
-[plugins]
-spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
-spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management" }
+spring-boot-gradle-plugin = { group = "org.springframework.boot", name = "spring-boot-gradle-plugin", version.ref = "spring-boot-gradle-plugin" }
+spring-dependency-management = { group = "io.spring.gradle", name   = "dependency-management-plugin", version.ref = "dependency-management-plugin" }

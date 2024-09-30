@@ -3,6 +3,8 @@ plugins {
     id 'checkstyle'
     id 'com.github.spotbugs'
     id 'com.diffplug.spotless'
+    id "org.springframework.boot"
+    id "io.spring.dependency-management"
 }
 
 group = 'com.xanadu'
@@ -19,7 +21,6 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-authorization-server'
 
     runtimeOnly('org.postgresql:postgresql')
 

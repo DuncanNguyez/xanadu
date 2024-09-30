@@ -10,19 +10,24 @@ plugins {
 repositories {
     // Use the plugin portal to apply community plugins in convention plugins.
     gradlePluginPortal()
+    mavenCentral()
 }
 
 dependencies {
     implementation libs.spotbugs
     implementation libs.spotless
+
+
+    implementation libs.spring.boot.gradle.plugin
+    implementation libs.spring.dependency.management
 }
 
 tasks.register('addPreCommitGitHookOnBuild') {
     println(" * * * Running Add Pre Commit Git Hook Script on Build * * * ")
-        copy {
-            from '../hooks/pre-commit'
-            into '../.git/hooks'
-        }
+    copy {
+        from '../hooks/pre-commit'
+        into '../.git/hooks'
+    }
     println("Added Pre Commit Git Hook Script.")
 }
 
