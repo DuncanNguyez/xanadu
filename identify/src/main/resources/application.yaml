@@ -20,9 +20,28 @@ spring:
               scopes:
                 - "openid"
                 - "profile"
-            require-authorization-consent: true
+            require-authorization-consent: false
             require-proof-key: true
+      client:
+        registration:
+          google-idp:
+            provider: google
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope: openid, https://www.googleapis.com/auth/userinfo.profile, https://www.googleapis.com/auth/userinfo.email
+            client-name: Sign in with Google
+          github-idp:
+            provider: github
+            client-id: ${GITHUB_CLIENT_ID}
+            client-secret: ${GITHUB_CLIENT_SECRET}
+            scope: user:email, read:user
+            client-name: Sign in with GitHub
+        provider:
+          google:
+            user-name-attribute: email
+          github:
+            user-name-attribute: login
 
 server:
-  port: 8080
+  port: ${AUTHORIZATION_SERVER_PORT}
 
