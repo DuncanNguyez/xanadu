@@ -4,7 +4,6 @@ body {
 }
 
 body {
-  display: flex;
   align-items: start;
   padding-top: 100px;
   background-color: #f5f5f5;
