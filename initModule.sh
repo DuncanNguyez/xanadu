@@ -43,14 +43,10 @@ touch "$name/build.gradle"
 cat <<EOF > "$name/build.gradle"
 plugins {
     id 'buildlogic.spring-boot-conventions'
-	alias(libs.plugins.spring.boot)
-	alias(libs.plugins.spring.dependency.management)
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
 }
 
 EOF

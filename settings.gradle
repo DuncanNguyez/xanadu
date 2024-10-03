@@ -12,3 +12,4 @@ plugins {
 
 rootProject.name = 'xanadu'
 include('identify')
+include('common')

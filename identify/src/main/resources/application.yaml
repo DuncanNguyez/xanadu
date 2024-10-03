@@ -41,7 +41,16 @@ spring:
             user-name-attribute: email
           github:
             user-name-attribute: login
-
+  datasource:
+    url: ${IDENTIFY_DATASOURCE_URL}
+    username: ${IDENTIFY_DATASOURCE_USERNAME}
+    password: ${IDENTIFY_DATASOURCE_PASSWORD}
+  jpa:
+    open-in-view: false
+    show-sql: false
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
 server:
   port: ${AUTHORIZATION_SERVER_PORT}
 
