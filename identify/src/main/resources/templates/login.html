@@ -12,7 +12,7 @@
 <div class="container">
     <h1 style="color:#625edbd4;text-align:center">XANADU</h1>
     <form class="form-signin w-100 m-auto" method="post" th:action="@{/login}">
-        <div th:if="${param.error}" class="alert alert-danger" role="alert">
+        <div th:if="${param.error}" th:text="${param.error}" class="alert alert-danger" role="alert">
             Invalid username or password.
         </div>
         <div th:if="${param.logout}" class="alert alert-success" role="alert">
