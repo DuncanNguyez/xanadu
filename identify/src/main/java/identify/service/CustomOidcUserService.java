@@ -56,7 +56,7 @@ public class CustomOidcUserService extends OidcUserService {
               .build());
     } else {
       if (!user.isEnabled()) {
-        throw new DisabledException("User has been disable");
+        throw new DisabledException("User has been disabled");
       }
     }
     return oidcUser;

@@ -62,7 +62,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
               .build());
     } else {
       if (!user.isEnabled()) {
-        throw new DisabledException("User has been disable");
+        throw new DisabledException("User has been disabled");
       } else if (user.getGithub() == null) {
         user.setGithub(github);
         userRepository.save(user);
