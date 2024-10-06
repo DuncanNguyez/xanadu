@@ -25,6 +25,11 @@ import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
 
 @Configuration(proxyBeanMethods = false)
 public class AuthorizationServerConfig {
+  String EMAIL_KEY_ON_ID_TOKEN = "email";
+  String GITHUB_KEY_ON_ID_TOKEN = "github";
+  String FIRST_NAME_KEY_ON_ID_TOKEN = "first_name";
+  String LAST_NAME_KEY_ON_ID_TOKEN = "last_name";
+  String AVATAR_URL_KEY_ON_ID_TOKEN = "avatar_url";
 
   @Bean
   @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -64,11 +69,11 @@ public class AuthorizationServerConfig {
                 .findByEmailOrGithub(key, key)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         Map<String, String> userInfo = new HashMap<>();
-        userInfo.put("email", user.getEmail());
-        userInfo.put("github", user.getGithub());
-        userInfo.put("first_name", user.getFirstname());
-        userInfo.put("last_name", user.getLastname());
-        userInfo.put("avatar_url", user.getAvatarUrl());
+        userInfo.put(this.EMAIL_KEY_ON_ID_TOKEN, user.getEmail());
+        userInfo.put(this.GITHUB_KEY_ON_ID_TOKEN, user.getGithub());
+        userInfo.put(this.FIRST_NAME_KEY_ON_ID_TOKEN, user.getFirstname());
+        userInfo.put(this.LAST_NAME_KEY_ON_ID_TOKEN, user.getLastname());
+        userInfo.put(this.AVATAR_URL_KEY_ON_ID_TOKEN, user.getAvatarUrl());
 
         context.getClaims().claims(claims -> claims.putAll(userInfo));
       }
