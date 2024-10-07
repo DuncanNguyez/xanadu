@@ -32,13 +32,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
-  private final UserRepository userRepository;
-  private final PasswordEncoder passwordEncoder;
+  public final UserRepository userRepository;
+  public final PasswordEncoder passwordEncoder;
+  public DefaultOAuth2UserService defaultOAuth2UserService = new DefaultOAuth2UserService();
 
   @Override
   public OAuth2User loadUser(OAuth2UserRequest userRequest)
       throws OAuth2AuthenticationException, DisabledException {
-    DefaultOAuth2UserService defaultOAuth2UserService = new DefaultOAuth2UserService();
     OAuth2User oAuth2User = defaultOAuth2UserService.loadUser(userRequest);
 
     String email = oAuth2User.getAttribute("email");
