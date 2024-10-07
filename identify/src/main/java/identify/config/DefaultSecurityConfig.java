@@ -26,14 +26,14 @@ public class DefaultSecurityConfig {
   @Autowired private CustomOAuth2UserService customOAuth2UserService;
   @Autowired private CustomOidcUserService customOidcUserService;
 
-  private final AuthenticationFailureHandler authenticationFailureHandler =
+  public final AuthenticationFailureHandler authenticationFailureHandler =
       (request, response, exception) -> {
         if (exception instanceof InternalAuthenticationServiceException) {
-          response.sendRedirect("/login?error=" + "Internal Server Error");
+          response.sendRedirect("/login?error=Internal Server Error");
         } else {
           String errorMessage = exception.getMessage();
           String encodedMessage = URLEncoder.encode(errorMessage, StandardCharsets.UTF_8);
-          response.sendRedirect("/login?error=" + exception.getMessage());
+          response.sendRedirect("/login?error=" + encodedMessage);
         }
       };
 
