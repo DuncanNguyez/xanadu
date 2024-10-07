@@ -1,11 +1,8 @@
-package identify.model;
+package common.permission;
 
-import static identify.model.Permission.*;
+import static common.permission.Permission.*;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,7 +28,14 @@ public enum Role implements IRole {
         getPermissions().stream()
             .map(permission -> new SimpleGrantedAuthority(permission.getPermission()))
             .collect(Collectors.toList());
-    authorities.add(new SimpleGrantedAuthority("ROLE_" + this.name()));
+    getRolesName().forEach(role -> authorities.add(new SimpleGrantedAuthority("ROLE_" + role)));
     return authorities;
+  }
+
+  @Override
+  public List<String> getRolesName() {
+    List<String> roles = new ArrayList<>(List.of(this.name()));
+    childRoles.forEach(role -> roles.addAll(role.getRolesName()));
+    return roles;
   }
 }

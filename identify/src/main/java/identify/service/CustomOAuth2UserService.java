@@ -1,6 +1,6 @@
 package identify.service;
 
-import identify.model.Role;
+import common.permission.Role;
 import identify.model.User;
 import identify.reponsitory.UserRepository;
 import java.util.UUID;

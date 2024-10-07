@@ -1,4 +1,4 @@
-package identify.model;
+package common.permission;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

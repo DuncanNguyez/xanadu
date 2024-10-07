@@ -1,5 +1,6 @@
 package identify.model;
 
+import common.permission.Role;
 import jakarta.persistence.*;
 import java.util.Collection;
 import lombok.*;
